@@ -245,7 +245,9 @@ class DiscountCode(models.Model):
         if input_code == self.code and self.is_used:
             self.is_used = False
             self.save()
+
 class ShoppingCart:
+
     def __init__(self):
         self.items = []
 
