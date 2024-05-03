@@ -245,4 +245,20 @@ class DiscountCode(models.Model):
         if input_code == self.code and self.is_used:
             self.is_used = False
             self.save()
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
 
+    def add_item(self, product):
+        self.items.append(product)
+
+    def calculate_total(self):
+        total_price = sum(item.price * item.quantity for item in self.items)
+        return total_price
+
+    def generate_report(self):
+        report = "Shopping Cart:\n"
+        for item in self.items:
+            report += f"- {item.name}: {item.price} * {item.quantity}\n"
+        report += f"Total: ${self.calculate_total()}\n"
+        return report
